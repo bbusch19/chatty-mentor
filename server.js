@@ -11,7 +11,7 @@ app.use(cors());
 let messages = [{message: 'hi', time: new Date()}, {message: 'hello', time: new Date()}];
 
 
-app.get('/', function(req, res, next) {
+app.get('/', (req, res, next) => {
     res.status(200).set({
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',
@@ -23,7 +23,7 @@ app.get('/', function(req, res, next) {
   }).send(JSON.stringify(messages));
 })
 
-app.post('/', function(req, res, next) {
+app.post('/', (req, res, next) => {
     messages.push({
         message: req.body.message,
         time: new Date()
@@ -39,6 +39,6 @@ app.post('/', function(req, res, next) {
   }).send(JSON.stringify(messages));
 })
 
-app.listen(port, function() {
+app.listen(port, () => {
     console.log(`Listening on port ${port}`);
 })
